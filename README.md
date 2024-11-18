@@ -297,7 +297,6 @@ You have successfully set up your Palworld server! For further customization, re
 
 
 **References**
-- https://developer.valvesoftware.com/wiki/SteamCMD#Linux
-- https://tech.palworldgame.com/getting-started/deploy-dedicated-server/
+- https://www.factorio.com/download
+- https://wiki.factorio.com/Multiplayer
 - https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
-- https://tech.palworldgame.com/settings-and-operation/configuration/
