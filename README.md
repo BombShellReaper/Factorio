@@ -35,9 +35,9 @@ This enables secure remote access to your server.
 
 # Step 3: Configure UFW (Uncomplicated Firewall)
 
-Allow all incoming connections to port 47194:
+Allow all incoming connections to port 34197:
 
-    sudo ufw allow from any proto udp to any port 47194 comment "Factorio Server Port"
+    sudo ufw allow from any proto udp to any port 34197 comment "Factorio Server Port"
 
 > [!TIP]
  For added security, change "any" to a specific IP address or range.
