@@ -76,57 +76,43 @@ Replace "*your_username*" with the desired username.
     sudo reboot
 
 -------------------------------------------------------------------------------
-# Step 5: Install Palworld Server
+# Step 5: Download the Factorio Dedicated Server Files & Set-Up
 
 **Log in to your server with the new user account through cmd, PowerShell, PuTTY, etc. Use your preferred terminal emulator.**
 
-**Install Palworld Server Files**
+**Make a Server Directory. Replace *server_dir_name* with the name you want**
 
-    steamcmd +login anonymous +app_update 2394010 validate +quit
+    mkdir server_dir_name
 
-**Navigate to the Server Directory**
+**Make a Downloads Directory. You can replace *Downloads* with any name you want.**
 
-    cd Steam/steamapps/common/PalServer
+    mkdir Downloads
 
-**Start the server**
+**Download The server Files**
 
-    ./PalServer.sh -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS
+    wget -P ~/Downloads https://factorio.com/get-download/stable/headless/linux64
 
-Stop the server with Ctrl + C.
+**Copy The file in the Downloads Directory to The Server Directory**
+
+    cp ~/Downloads/the_server_file ~/server_dir_name
+
+**Extract the file into the Factorio Server directory**
+
+    tar -xvf server_dir_name the_zip_in_the_Downloads_dir --strip-comments=1 -C server_dir_name
+
+**Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
+
+    cd ~/server_dir_name
+
+
+
+
 
 # Step 6: Configure the Server
 
-**Edit PalWorldSettings.ini**
 
-    nano Pal/Saved/Config/LinuxServer/PalWorldSettings.ini
 
-**Add the following to PalworldSettings.ini**
 
-    [/Script/Pal.PalGameWorldSettings]
-    OptionSettings=(Difficulty=None,DayTimeSpeedRate=1.000000,NightTimeSpeedRate=1.000000,ExpRate=1.000000,PalCaptureRate=1.000000,PalSpawnNumRate=1.000000,PalDamageRateAttack=1.000000,PalDamageRateDefense=1.000000,PlayerDamageRateAttack=1.000000,PlayerDamageRateDefense=1.000000,PlayerStomachDecreaceRate=1.000000,PlayerStaminaDecreaceRate=1.000000,PlayerAutoHPRegeneRate=1.000000,PlayerAutoHpRegeneRateInSleep=1.000000,PalStomachDecreaceRate=1.000000,PalStaminaDecreaceRate=1.000000,PalAutoHPRegeneRate=1.000000,PalAutoHpRegeneRateInSleep=1.000000,BuildObjectDamageRate=1.000000,BuildObjectDeteriorationDamageRate=1.000000,CollectionDropRate=1.000000,CollectionObjectHpRate=1.000000,CollectionObjectRespawnSpeedRate=1.000000,EnemyDropItemRate=1.000000,DeathPenalty=All,bEnablePlayerToPlayerDamage=False,bEnableFriendlyFire=False,bEnableInvaderEnemy=True,bActiveUNKO=False,bEnableAimAssistPad=True,bEnableAimAssistKeyboard=False,DropItemMaxNum=3000,DropItemMaxNum_UNKO=100,BaseCampMaxNum=128,BaseCampWorkerMaxNum=15,DropItemAliveMaxHours=1.000000,bAutoResetGuildNoOnlinePlayers=False,AutoResetGuildTimeNoOnlinePlayers=72.000000,GuildPlayerMaxNum=20,BaseCampMaxNumInGuild=4,PalEggDefaultHatchingTime=72.000000,WorkSpeedRate=1.000000,AutoSaveSpan=30.000000,bIsMultiplay=False,bIsPvP=False,bCanPickupOtherGuildDeathPenaltyDrop=False,bEnableNonLoginPenalty=True,bEnableFastTravel=True,bIsStartLocationSelectByMap=True,bExistPlayerAfterLogout=False,bEnableDefenseOtherGuildPlayer=False,bInvisibleOtherGuildBaseCampAreaFX=False,CoopPlayerMaxNum=4,ServerPlayerMaxNum=32,ServerName="Default Palworld Server",ServerDescription="",AdminPassword="",ServerPassword="",PublicPort=8211,PublicIP="",RCONEnabled=False,RCONPort=25575,Region="",bUseAuth=True,BanListURL="https://api.palworldgame.com/api/banlist.txt",RESTAPIEnabled=False,RESTAPIPort=8212,bShowPlayerList=False,AllowConnectPlatform=Steam,bIsUseBackupSaveData=True,LogFormatType=Text,SupplyDropSpan=180)
-
-> [!TIP]
-> Edit the following settings as needed:
-
-ServerName=""
-
-ServerDescription="" (optional)
-
-AdminPassword="" (optional)
-
-ServerPassword="" (optional)
-
-PublicIP=""
-
-> [!Important]
-> The file should have two lines and if you use nano it should look something like this.
-
-![image](https://github.com/user-attachments/assets/3efb9777-25d3-49ec-8846-e56372c564f0)
-
-> [!TIP]
-> You can also find the PalWorldSettings.ini settings at the following location. Replace *your_username* with the actual username.
-
-    nano /home/your_username/Steam/steamapps/common/PalServer/DefaultPalWorldSettings.ini
 
 # Step 7: Create a Startup Script (Optional)
 
