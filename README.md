@@ -116,10 +116,6 @@ Replace "*your_username*" with the desired username.
 
     ./bin/x64/factorio --create ./saves/my-save.zip
 
-**Start the server. Replace *my-save.zip* with the name you chose in the previous instructions.**
-
-    ./bin/x64/factorio --start-server ./saves/my-save.zip
-
 # Step 6: Configure the Server
 
 **Navigate to the **data** Directory. Replace *server_dir_name* with the one you created**
