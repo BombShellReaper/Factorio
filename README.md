@@ -436,19 +436,19 @@ Switch to your sudo user that you used at the beginning. Replace "*your_username
 **Add the following configuration:**
 
     [Unit]
-    Description=Your Application Description
+    Description=Custom Game Server
     After=network.target
-
+    
     [Service]
     Type=simple
-    User=youruser         # Replace with the username you created in the beginning
-    ExecStart=/path/to/your/executable/startup/script.sh      # Replace with your full script path
+    User=yourusername # Define the user under which the service will run. Default is "user".
+    ExecStart=/path/to/start_server.sh # Path to the script that starts the server. Default is /path/to/start_server.sh.
     RemainAfterExit=yes
     Restart=on-failure
     RestartSec=5
-    StandardOutput=append:/var/log/yourapp.log
-    StandardError=append:/var/log/yourapp.log
-
+    StandardOutput=/var/log/game_server.log # Standard output and error logs. The log file location can be customized.
+    StandardError=/var/log/game_server.log # Standard output and error logs. The log file location can be customized.
+    
     [Install]
     WantedBy=multi-user.target
 
@@ -461,8 +461,8 @@ Switch to your sudo user that you used at the beginning. Replace "*your_username
 **Enable and Start the Service**
 
     sudo systemctl daemon-reload
-    sudo systemctl enable PalWorld.service
-    sudo systemctl start PalWorld.service
+    sudo systemctl enable factorio_server.service
+    sudo systemctl start factorio_server.service
 
 > [!Important]
 >  *This systemd service, along with the accompanying script, ensures that your server automatically starts after a reboot and updates itself before launching.*
