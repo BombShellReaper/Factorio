@@ -134,21 +134,21 @@ Replace "*your_username*" with the desired username.
     nano map-settings.exanple.json
 
 > [!TIP]
-> When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
+> When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
 
 **Edit the Server Setting**
 
     nano server-settings.example.json
 
 > [!TIP]
-> When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
+> When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
 
 **Edit The Map Generation settings. This is optional since you already generated the world**
 
     nano map-gen-settings,example.json
 
 > [!TIP]
-> When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
+> When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
 
 > [!NOTE]
 > If you want to change the **map-gen-settings**, then you will need to delete the current **my-save.zip** in the **saves** directory and re-create a new **my,save.zip**
