@@ -126,7 +126,7 @@ Replace "*your_username*" with the desired username.
 
 # Step 6: Configure the Server
 
-**Navigate to the **__data__** Directory. Replace *server_dir_name* with the one you created**
+**Navigate to the **_data_** Directory. Replace *server_dir_name* with the one you created**
 
     cd ~/server_dir_name/factorio/data
 
