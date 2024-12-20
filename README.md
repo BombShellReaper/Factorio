@@ -431,7 +431,7 @@ Switch to your sudo user that you used at the beginning. Replace "*your_username
 
 **Create the service file:**
 
-    sudo nano /etc/systemd/system/PalWorld.service
+    sudo nano /etc/systemd/system/factorio_server.service
 
 **Add the following configuration:**
 
