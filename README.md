@@ -219,7 +219,7 @@ Copy and edit the following script:
 
     nano 
 
-**Edit The Variables In The Begining Of The Script
+**Edit The Variables In The Begining Of The Script**
 
     #!/bin/bash
     
