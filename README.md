@@ -423,7 +423,7 @@ Copy and edit the following script:
     
     exit 0  # Exit the script after completion
     
-    # Step 8: Create a Systemd Service (Optional)
+# Step 8: Create a Systemd Service (Optional)
 
 Switch to your sudo user that you used at the beginning. Replace "*your_username*" with the actual username.
 
