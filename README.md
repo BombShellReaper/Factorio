@@ -435,11 +435,11 @@ Login with the sudo user and edit the sshd_config file
 
 Locate the following lines and uncomment them, making the specified edits:
 
- **#LoginGraceTime 2m**
+ **LoginGraceTime 2m**
 
     LoginGraceTime 1m
 
- **#PermitRootLogin prohibit-password**
+ **PermitRootLogin prohibit-password**
 
     PermitRootLogin no
 
