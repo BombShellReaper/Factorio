@@ -126,7 +126,19 @@ Replace "*your_username*" with the desired username.
 
 # Step 6: Configure the Server
 
+**Navigate to the **__data__** Directory. Replace *server_dir_name* with the one you created**
 
+    cd ~/server_dir_name/factorio/data
+
+> [!NOTE]
+> There are three files you can edit before starting the server. Howerver this is optional, but highly recomended.
+
+**Edit the Map Settings**
+
+    nano map-settings.exanple.json
+
+> [!TIP]
+> When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
 
 
 
