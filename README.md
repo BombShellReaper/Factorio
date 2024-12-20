@@ -120,13 +120,9 @@ Replace "*your_username*" with the desired username.
 
     ./bin/x64/factorio --start-server ./saves/my-save.zip
 
-
-
-
-
 # Step 6: Configure the Server
 
-**Navigate to the **_data_** Directory. Replace *server_dir_name* with the one you created**
+**Navigate to the **data** Directory. Replace *server_dir_name* with the one you created**
 
     cd ~/server_dir_name/factorio/data
 
@@ -140,7 +136,29 @@ Replace "*your_username*" with the desired username.
 > [!TIP]
 > When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
 
+**Edit the Server Setting**
 
+    nano server-settings.example.json
+
+> [!TIP]
+> When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
+
+**Edit The Map Generation settings. This is optional since you already generated the world**
+
+    nano map-gen-settings,example.json
+
+> [!TIP]
+> When you are done making changes. Press the "Ctrl" + "O", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "ctrl" + "x"
+
+> [!NOTE]
+> If you want to change the **map-gen-settings**, then you will need to delete the current **my-save.zip** in the **saves** directory and re-create a new **my,save.zip**
+
+**Start the server. Replace *my-save.zip* with the name you chose in the previous instructions.**
+
+    ./bin/x64/factorio --start-server ./saves/my-save.zip
+
+> [!NOTE]
+> Once the server starts and only if it starts you will stop the server by pressing "Ctrl" + "c". 
 
 # Step 7: Create a Startup Script (Optional)
 
