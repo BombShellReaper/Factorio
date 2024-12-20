@@ -19,7 +19,7 @@ This is a step-by-step guide on how to set up and run a Factorio server.
 
 # Step 2: Install Required Dependencies 
     
-**Install Screen (Session Manager)**
+> Install Screen (Session Manager)
 
     sudo apt install screen -y
 
