@@ -102,7 +102,23 @@ Replace "*your_username*" with the desired username.
 
 **Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
 
-    cd ~/server_dir_name
+    cd ~/server_dir_name/factorio
+
+**Delete the Zip file. Replace *the_zip_file* with the correct name**
+
+    rm the_zip_file
+
+**Create a *saves* Directory**
+
+    mkdir saves
+
+**Create a new save Replace *my-save.zip* with what you want the save to be called. Example: Fun-Land.zip**
+
+    ./bin/x64/factorio --create ./saves/my-save.zip
+
+**Start the server. Replace *my-save.zip* with the name you chose in the previous instructions.**
+
+    ./bin/x64/factorio --start-server ./saves/my-save.zip
 
 
 
