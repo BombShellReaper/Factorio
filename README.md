@@ -141,7 +141,7 @@ Replace "*your_username*" with the desired username.
 
 **Edit The Map Generation settings. This is optional since you already generated the world**
 
-    nano map-gen-settings,example.json
+    nano map-gen-settings.example.json
 
 > [!TIP]
 > When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
@@ -170,56 +170,16 @@ Change to the new directory. Change the "*name*" with the one you just created:
 
     cd name
 
-Create a script. Change the "*name.sh*" with your desired script name.
-
-    nano name.sh
-
-Copy and edit the following script:
-
-    #!/bin/bash
-
-    #set -x     # Uncomment to enable debug output. This will show you each command as it’s executed, which can help identify where it fails
-
-    # Log file
-    LOGFILE="/path/to/your/logfile.txt"  # Update with your log file path
-    DIRPATH="/path/to/your/server" # Update with the directory containing "*name.sh*"
-
-    # Create the log directory if it doesn't exist
-    LOGDIR=$(dirname "$LOGFILE")
-    mkdir -p "$LOGDIR"
-
-    # Create the log file if it doesn't exist
-    touch "$LOGFILE"
-
-    # Function to log messages with date/time
-    log() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOGFILE"
-    }
-
-    # Update PalWorld using steamcmd
-    {
-            log "Updating PalWorld..."
-        if /usr/games/steamcmd +force_install_dir "$DIRPATH" +login anonymous +app_update 2394010 validate +quit; then
-            log "Update completed."
-        else
-            log "Update failed."
-        fi
-
-        # Start the PalWorld server
-            log "Starting PalWorld server..."
-        if /usr/bin/screen -dmS PalWorld "$DIRPATH/PalServer.sh" -useperfthreads -NoAsyncLoadingThread -UseMultithreadForDS -PublicLobby 2>> "$LOGFILE"; then
-            log "PalWorld server started successfully."
-        else
-            log "Failed to start PalWorld server."
-            exit 1  # Exit if the server fails to start
-        fi
-    } 2>&1 | tee -a "$LOGFILE"
-
-**Make the script executable by the user:**
+Create a script. You can change the "*factorio_server_manager.sh*" with your desired script name, but remember to change it throught the following instrustions.
 
     nano factorio_server_manager.sh
 
-**Edit The Variables In The Begining Of The Script**
+
+**Make the script executable by the user:**
+
+    chmod +x factorio_server_manager.sh
+
+**Copy & edit The Variables In The Begining Of The Script**
 
     #!/bin/bash
     
@@ -441,8 +401,8 @@ Switch to your sudo user that you used at the beginning. Replace "*your_username
     
     [Service]
     Type=simple
-    User=yourusername # Define the user under which the service will run. Default is "user".
-    ExecStart=/path/to/start_server.sh # Path to the script that starts the server. Default is /path/to/start_server.sh.
+    User=yourusername                     # Define the user under which the service will run. Default is "user".
+    ExecStart=/path/to/start_server.sh    # Path to the script that starts the server. 
     RemainAfterExit=yes
     Restart=on-failure
     RestartSec=5
