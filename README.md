@@ -443,7 +443,7 @@ Locate the following lines and uncomment them, making the specified edits:
 
     PermitRootLogin no
 
- **#MaxSessions 10**
+ **MaxSessions 10**
 
     Max Sessions 4
 
