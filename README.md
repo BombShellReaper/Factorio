@@ -25,11 +25,11 @@ This is a step-by-step guide on how to set up and run a Factorio server.
 
 **Install OpenSSH Sever**
 
-This enables secure remote access to your server.
+> This enables secure remote access to your server.
 
     sudo apt install openssh-server -y
 
-**Install UFW (Uncomplicated Firewall)**
+> Install UFW (Uncomplicated Firewall)
 
     sudo apt install ufw -y
 
