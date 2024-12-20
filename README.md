@@ -98,7 +98,7 @@ Replace "*your_username*" with the desired username.
 
 **Extract the file into the Factorio Server directory**
 
-    tar -xvf server_dir_name the_zip_in_the_Downloads_dir --strip-comments=1 -C server_dir_name
+    tar -xvf server_dir_name the_zip_in_the_Downloads_dir --strip-comments=1 -C ~/server_dir_name
 
 **Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
 
