@@ -186,18 +186,18 @@ Create a script. You can change the "*factorio_server_manager.sh*" with your des
     set -e  # Exit on any error
     
     # Configurable Variables
-    FACTORIO_DIR="YOUR_PATH/factorio_server"  # Set the path to your Factorio server directory
-    BACKUP_DIR="YOUR_PATH"  # Set the path to where you want backups to be stored
-    DOWNLOADS_DIR="YOUR_PATH/Downloads"  # Set the path to your downloads directory
-    LOGS_DIR="YOUR_PATH/logs"  # Set the path to your logs directory
-    FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"  # Name of the Factorio server download
-    FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"  # URL for downloading Factorio headless server
-    BACKUP_NAME="${BACKUP_DIR}/BackUp"  # Backup with timestamp
-    UPDATE_LOG_FILE="${LOGS_DIR}/UpdateServer-$(date +%Y-%m-%d_%H-%M-%S).txt"  # Log file for updates
-    SCREEN_NAME="YOUR_SCREEN_SESSION_NAME"  # Name of your screen session (e.g., Factorio_Server)
-    SAVE_FILE="${FACTORIO_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"  # Path to the save file for the Factorio server
-    SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"  # Path to server settings file
-    CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"  # File to store the checksum of the downloaded Factorio file
+    FACTORIO_DIR="YOUR_PATH/factorio_server"                                    # Set the path to your Factorio server directory
+    BACKUP_DIR="YOUR_PATH"                                                      # Set the path to where you want backups to be stored
+    DOWNLOADS_DIR="YOUR_PATH/Downloads"                                         # Set the path to your downloads directory
+    LOGS_DIR="YOUR_PATH/logs"                                                   # Set the path to your logs directory
+    FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"             # Name of the Factorio server download
+    FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"    # URL for downloading Factorio headless server
+    BACKUP_NAME="${BACKUP_DIR}/BackUp"                                          # Backup with timestamp
+    UPDATE_LOG_FILE="${LOGS_DIR}/UpdateServer-$(date +%Y-%m-%d_%H-%M-%S).txt"   # Log file for updates
+    SCREEN_NAME="YOUR_SCREEN_SESSION_NAME"                                      # Name of your screen session (e.g., Factorio_Server)
+    SAVE_FILE="${FACTORIO_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"               # Path to the save file for the Factorio server
+    SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"        # Path to server settings file
+    CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                      # File to store the checksum of the downloaded Factorio file
     
     # Log function to log messages to the update log file
     log() {
