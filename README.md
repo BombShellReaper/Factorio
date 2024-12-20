@@ -1,4 +1,4 @@
-## Factorio
+### Factorio
 
 **Overview**
 
