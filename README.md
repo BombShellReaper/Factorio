@@ -82,7 +82,7 @@ Replace "*your_username*" with the desired username.
 
 **Make a Server Directory. Replace *server_dir_name* with the name you want**
 
-    mkdir server_dir_name
+    mkdir -p server_dir_name/factorio
 
 **Make a Downloads Directory. You can replace *Downloads* with any name you want.**
 
@@ -98,7 +98,7 @@ Replace "*your_username*" with the desired username.
 
 **Extract the file into the Factorio Server directory**
 
-    tar -xvf server_dir_name the_zip_in_the_Downloads_dir --strip-comments=1 -C ~/server_dir_name/factorio
+    tar -xvf server_dir_name/factorio the_zip_in_the_Downloads_dir --strip-comments=1 -C ~/server_dir_name/factorio
 
 **Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
 
