@@ -17,7 +17,7 @@ This is a step-by-step guide on how to set up and run a Factorio server.
 
     sudo apt update && sudo apt full-upgrade -y && sudo apt autoremove -y
 
-# Step 2: Install Required Dependencice 
+# Step 2: Install Required Dependencies 
     
 **Install Screen (Session Manager)**
 
@@ -40,14 +40,14 @@ Allow all incoming connections to port 34197:
     sudo ufw allow from any proto udp to any port 34197 comment "Factorio Server Port"
 
 > [!TIP]
- For added security, change "any" to a specific IP address or range.
+> For improved security, restrict access to only trusted IP addresses.
 
 **Allow SSH Connections Through UFW** (Optional)
 
     sudo ufw allow from any to any port 22 comment "SSH"
 
 > [!TIP]
-> For added security, change "any" to a specific IP address or range.
+> For improved security, restrict access to only trusted IP addresses.
 
 Set the default rule to deny incoming traffic (Optional)
 
@@ -98,7 +98,7 @@ Replace "*your_username*" with the desired username.
 
 **Extract the file into the Factorio Server directory**
 
-    tar -xvf server_dir_name/factorio the_zip_in_the_Downloads_dir --strip-comments=1 -C ~/server_dir_name/factorio
+    tar -xvf server_dir_name/factorio the_zip_in_the_Downloads_dir --strip-components=1 -C ~/server_dir_name/factorio
 
 **Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
 
@@ -127,7 +127,7 @@ Replace "*your_username*" with the desired username.
 
 **Edit the Map Settings**
 
-    nano map-settings.exanple.json
+    nano map-settings.example.json
 
 > [!TIP]
 > When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
