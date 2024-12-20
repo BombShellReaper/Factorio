@@ -217,7 +217,7 @@ Copy and edit the following script:
 
 **Make the script executable by the user:**
 
-    nano 
+    nano factorio_server_manager.sh
 
 **Edit The Variables In The Begining Of The Script**
 
