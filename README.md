@@ -90,7 +90,7 @@ Replace "*your_username*" with the desired username.
 
 **Download The server Files**
 
-    wget -P ~/Downloads https://factorio.com/get-download/stable/headless/linux64
+    wget -v -O ~/Downloads/factorio-headless_linux$(date +%Y-%m-%d).tar.xz https://factorio.com/get-download/stable/headless/linux64
 
 **Copy The file in the Downloads Directory to The Server Directory**
 
