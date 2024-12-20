@@ -485,10 +485,9 @@ Edit the following line to restrict su. Replace "*group_name*" with the one you 
 
 **Conclusion**
 
-You have successfully set up your Palworld server! For further customization, refer to the game’s official documentation.
+You have successfully set up your factorio server! For further customization, refer to the game’s official documentation.
 
 
-**References**
 - https://www.factorio.com/download
 - https://wiki.factorio.com/Multiplayer
 - https://www.digitalocean.com/community/tutorials/ufw-essentials-common-firewall-rules-and-commands
