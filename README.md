@@ -1,6 +1,6 @@
 # Factorio
 
-# **_Overview_**
+**Overview**
 
 This is a step-by-step guide on how to set up and run a Factorio server.
 
