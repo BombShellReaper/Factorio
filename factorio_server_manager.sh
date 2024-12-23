@@ -197,10 +197,19 @@ fi
 # Step 11: Remove the downloaded tar.xz file in the Factorio directory
 log INFO "Cleaning up the tar.xz file from ${FACTORIO_DIR}..."
 
-# Step 12: Check if the tar.xz file exists in FACTORIO_DIR
 if ls "${FACTORIO_DIR}"/*.tar.xz 1> /dev/null 2>&1; then
     rm -f "${FACTORIO_DIR}"/*.tar.xz
     log INFO "All .tar.xz files removed from ${FACTORIO_DIR}."
+else
+    log INFO "No .tar.xz files found in ${FACTORIO_DIR} to remove."
+fi
+
+# Step 12: Remove the dowloaded tar.xz in the Downloads directory
+log INFO "Cleaning yp the tar.xz file from &{DOWNLOADS_DIR}..."
+
+if ls "${DOWNLOADS_DIR}"/*.tar.xz 1> /dev/null 2>&1; then
+    rm -f "${DOWNLOADS_DIR}"/*.tar.xz
+    log INFO "All .tar.xz files removed from ${DOWNLOADS_DIR}."
 else
     log INFO "No .tar.xz files found in ${FACTORIO_DIR} to remove."
 fi
@@ -226,4 +235,3 @@ fi
 log INFO "========== Update Process Completed: $(date) =========="
 
 exit 0  # Exit the script after completion
-
