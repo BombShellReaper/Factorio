@@ -433,7 +433,7 @@ This is a step-by-step guide on how to set up and run a Factorio server.
 
     sudo nano /etc/ssh/sshd_config
 
-> Locate the following lines and uncomment them, making the specified edits:
+Locate the following lines and uncomment them, making the specified edits:
 
 > **LoginGraceTime 2m**
 
