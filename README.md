@@ -1,10 +1,10 @@
 # Setting Up a Dedicated Factorio
 
-### **Overview**
+## **Overview**
 
 - This is a step-by-step guide on how to set up and run a Factorio server.
 
-### **Prerequisites**
+## **Prerequisites**
 
 - Ubuntu server (20.04 or higher recommended)
 - Basic knowledge of terminal commands
