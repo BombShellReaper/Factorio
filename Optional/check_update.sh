@@ -16,10 +16,33 @@ SAVE_FILE="${FACTORIO_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"  # Path to the sav
 SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"  # Path to server settings file
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"  # File to store the checksum of the downloaded Factorio file
 REBOOT_WARNING="The server requires an immediate reboot to apply the updates."
+LOG_LEVEL="${LOG_LEVEL:-INFO}"
 
 # Log function to log messages to the update log file
 log() {
-    echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "${UPDATE_LOG_FILE}"
+    local level="$1"
+    local message="$2"
+
+    # Determine whether to log based on log level
+    case "$LOG_LEVEL" in
+        DEBUG)
+            echo "$(date '+%Y-%m-%d %H:%M:%S') - [$level] - $message" >> "${UPDATE_LOG_FILE}"
+            ;;
+        INFO)
+            if [[ "$level" == "INFO" || "$level" == "ERROR" ]]; then
+                echo "$(date '+%Y-%m-%d %H:%M:%S') - [$level] - $message" >> "${UPDATE_LOG_FILE}"
+            fi
+            ;;
+        ERROR)
+            if [[ "$level" == "ERROR" ]]; then
+                echo "$(date '+%Y-%m-%d %H:%M:%S') - [$level] - $message" >> "${UPDATE_LOG_FILE}"
+            fi
+            ;;
+        *)
+            echo "Invalid log level specified. Defaulting to INFO."
+            LOG_LEVEL="INFO"
+            ;;
+    esac
 }
 
 # Ensure necessary directories exist
@@ -28,11 +51,11 @@ mkdir -p "${LOGS_DIR}" "${FACTORIO_DIR}" "${DOWNLOADS_DIR}"
 # Redirect all output for the update process to its log file
 exec > >(tee -a "${UPDATE_LOG_FILE}") 2>&1
 
-echo "========== Update Process Started: $(date) =========="
+log INFO "========== Update Process Started: $(date) =========="
 
 # Step 1: Check checksum to avoid unnecessary downloads
 if [[ -f "${CHECKSUM_FILE}" ]]; then
-    echo "Verifying checksum..."
+    log INFO "Verifying checksum..."
 
     # Get the checksum of the currently downloaded server file
     NEW_CHECKSUM=$(wget -qO- "${FACTORIO_URL}" | sha256sum | awk '{print $1}')
@@ -41,49 +64,49 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
     PREVIOUS_CHECKSUM=$(cat "${CHECKSUM_FILE}")
 
     if [[ "$NEW_CHECKSUM" == "$PREVIOUS_CHECKSUM" ]]; then
-        echo "Checksum matches. Skipping download and backup, exiting the script."
+        log INFO "Checksum matches. Skipping download and backup, exiting the script."
 
         exit 0  # Exit early if the server is started
     else
-        echo "Checksum mismatch. Proceeding with download and update."
+        log INFO "Checksum mismatch. Proceeding with download and update."
     fi
 else
-    echo "Checksum file does not exist, proceeding with download and update."
+    log INFO "Checksum file does not exist, proceeding with download and update."
 fi
 
 # Step 2: Check if the screen session exists
 if screen -list | grep -q "$SCREEN_NAME"; then
-# Send server reboot message to the screen session
+    # Send server reboot message to the screen session
     screen -S "$SCREEN_NAME" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 30
+    sleep 15
 else
-    echo "Screen session '$SCREEN_NAME' not found."
+    log ERROR "Screen session '$SCREEN_NAME' not found."
 fi
 
 # Step 3: Stop the screen session
-    screen -S "$SCREEN_NAME" -X stuff $'\003'
-    sleep 15
+screen -S "$SCREEN_NAME" -X stuff $'\003'
+sleep 15
 
 # Step 4: Backup the current Factorio server
 if [ -d "${BACKUP_NAME}" ]; then
-    echo "Removing existing BackUp directory..."
+    log INFO "Removing existing BackUp directory..."
     rm -rf "${BACKUP_NAME}"
-    echo "BackUp directory removed."
+    log INFO "BackUp directory removed."
 else
-    echo "No BackUp directory found. Skipping removal."
+    log INFO "No BackUp directory found. Skipping removal."
 fi
 
 # Step 5: Always create a backup of "factorio_server"
 cp -r "${FACTORIO_DIR}" "${BACKUP_NAME}"
 if [ $? -eq 0 ]; then
-    echo "Backup created at ${BACKUP_NAME}."
+    log INFO "Backup created at ${BACKUP_NAME}."
 else
-    echo "Error: Failed to create backup."
+    log ERROR "Error: Failed to create backup."
     exit 1
 fi
 
 # Step 6: Download the Factorio headless server file with retry mechanism
-echo "Downloading Factorio headless server to ${DOWNLOADS_DIR}/${FACTORIO_FILE}..."
+log INFO "Downloading Factorio headless server to ${DOWNLOADS_DIR}/${FACTORIO_FILE}..."
 attempt=1
 max_attempts=2
 
@@ -93,12 +116,12 @@ while [ $attempt -le $max_attempts ]; do
 
     # Check if the download was successful (exit status 0)
     if [ $? -eq 0 ]; then
-        echo "Download successful on attempt ${attempt}."
+        log INFO "Download successful on attempt ${attempt}."
         break
     else
         # If this was the first attempt, wait 60 seconds before retrying
         if [ $attempt -eq 1 ]; then
-            echo "Download failed on attempt ${attempt}. Retrying in 60 seconds..."
+            log INFO "Download failed on attempt ${attempt}. Retrying in 60 seconds..."
             sleep 60
         fi
 
@@ -107,8 +130,7 @@ while [ $attempt -le $max_attempts ]; do
 
         # If it's the second attempt and it fails, log the error and exit
         if [ $attempt -gt $max_attempts ]; then
-            echo "Download failed after ${max_attempts} attempts. Exiting."
-            echo "Download failed after ${max_attempts} attempts to ${FACTORIO_URL}" >> "${UPDATE_LOG_FILE}"
+            log ERROR "Download failed after ${max_attempts} attempts. Exiting."
             exit 1
         fi
     fi
@@ -116,64 +138,70 @@ done
 
 # Step 7: Store checksum after download (Ensure the file only contains the latest checksum)
 sha256sum "${DOWNLOADS_DIR}/${FACTORIO_FILE}" | awk '{print $1}' > "${CHECKSUM_FILE}"
-echo "Checksum for the downloaded file saved."
+log INFO "Checksum for the downloaded file saved."
 
 # Step 8: Copy the downloaded file to the Factorio directory
-echo "Copying downloaded file to ${FACTORIO_DIR}..."
+log INFO "Copying downloaded file to ${FACTORIO_DIR}..."
 cp "${DOWNLOADS_DIR}/${FACTORIO_FILE}" "${FACTORIO_DIR}"
-echo "File copied to ${FACTORIO_DIR}."
+log INFO "File copied to ${FACTORIO_DIR}."
 
 # Step 9: Extract the file into the Factorio directory
-echo "Extracting ${FACTORIO_FILE} to ${FACTORIO_DIR}/factorio..."
+log INFO "Extracting ${FACTORIO_FILE} to ${FACTORIO_DIR}/factorio..."
 mkdir -p "${FACTORIO_DIR}/factorio"
 tar -xvf "${FACTORIO_DIR}/${FACTORIO_FILE}" --strip-components=1 -C "${FACTORIO_DIR}/factorio" || {
-    echo "Extraction failed." >> "${UPDATE_LOG_FILE}"
+    log ERROR "Extraction failed."
     exit 1
 }
-echo "Extraction completed."
+log INFO "Extraction completed."
 
 # Step 10: Start Factorio server using screen
-echo "Starting Factorio server..." >> "${UPDATE_LOG_FILE}"
+log INFO "Starting Factorio server..."
 screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/factorio/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" >> "${UPDATE_LOG_FILE}" 2>&1
 
 # Check if the screen session is running
 if screen -list | grep -q "${SCREEN_NAME}"; then
-    echo "Factorio server started successfully in screen session: ${SCREEN_NAME}" >> "${UPDATE_LOG_FILE}"
+    log INFO "Factorio server started successfully in screen session: ${SCREEN_NAME}"
 else
-    echo "Failed to start Factorio server." >> "${UPDATE_LOG_FILE}"
+    log ERROR "Failed to start Factorio server."
     exit 1
 fi
 
 # Step 11: Remove the downloaded tar.xz file in the Factorio directory
-echo "Cleaning up the tar.xz file from ${FACTORIO_DIR}..."
-
-# Check if the tar.xz file exists in FACTORIO_DIR
+log INFO "Cleaning up the tar.xz file from ${FACTORIO_DIR}..."
 if ls "${FACTORIO_DIR}"/*.tar.xz 1> /dev/null 2>&1; then
     rm -f "${FACTORIO_DIR}"/*.tar.xz
-    echo "All .tar.xz files removed from ${FACTORIO_DIR}."
+    log INFO "All .tar.xz files removed from ${FACTORIO_DIR}."
 else
-    echo "No .tar.xz files found in ${FACTORIO_DIR} to remove."
+    log INFO "No .tar.xz files found in ${FACTORIO_DIR} to remove."
 fi
 
 # Step 12: Clean up all Factorio headless server .tar.xz files in Downloads
 if ls "${DOWNLOADS_DIR}"/*.tar.xz 1> /dev/null 2>&1; then
-    echo "Cleaning up all .tar.xz files in ${DOWNLOADS_DIR}..."
+    log INFO "Cleaning up all .tar.xz files in ${DOWNLOADS_DIR}..."
     rm -f "${DOWNLOADS_DIR}"/*.tar.xz
-    echo "All .tar.xz files removed from ${DOWNLOADS_DIR}."
+    log INFO "All .tar.xz files removed from ${DOWNLOADS_DIR}."
 else
-    echo "No .tar.xz files found in ${DOWNLOADS_DIR}. No cleanup needed."
+    log INFO "No .tar.xz files found in ${DOWNLOADS_DIR}. No cleanup needed."
 fi
 
 # Step 13: Clean up old update log files in ~/logs
 LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | wc -l)
 if [ "${LOG_COUNT}" -gt 30 ]; then
-    ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | tail -n +31 | xargs -d '\n' -r rm --
-    echo "Old update log files cleaned up."
+    ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | tail -n +31 | while read log_file; do
+        # Check if the log file exists before attempting to remove it
+        if [ -f "${LOGS_DIR}/${log_file}" ]; then
+            rm -f "${LOGS_DIR}/${log_file}"
+            log INFO "Removed old log file: ${log_file}"
+        else
+            log INFO "Log file ${log_file} no longer exists, skipping."
+        fi
+    done
+    log INFO "Old update log files cleaned up."
 else
-    echo "Update log files do not exceed limit; no cleanup needed."
+    log INFO "Update log files do not exceed limit; no cleanup needed."
 fi
 
 # Step 14: Ensure the script exits cleanly after starting the server
-echo "========== Update Process Completed: $(date) =========="
+log INFO "========== Update Process Completed: $(date) =========="
 
 exit 0  # Exit the script after completion
