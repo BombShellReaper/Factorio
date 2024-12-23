@@ -439,9 +439,10 @@
     Type=simple
     User=yourusername                          # Define the user under which the service will run. Default is "user".
     ExecStart=/path/to/start_server.sh         # Path to the script that starts the server. 
-    RemainAfterExit=yes
     Restart=on-failure
     RestartSec=5
+    StartLimitIntervalSec=60
+    StartLimitBurst=3
     StandardOutput=/var/log/game_server.log    # Standard output and error logs. The log file location can be customized.
     StandardError=/var/log/game_server.log     # Standard output and error logs. The log file location can be customized.
     
