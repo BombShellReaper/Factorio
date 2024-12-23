@@ -15,6 +15,7 @@ SCREEN_NAME="Factorio_Server_Community"
 SAVE_FILE="${FACTORIO_DIR}/factorio/saves/community_server.zip"
 SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"
+LOG_LEVEL="${LOG_LEVEL:-INFO}"
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
