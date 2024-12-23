@@ -78,7 +78,7 @@ This is a step-by-step guide on how to set up and run a Factorio server.
 -------------------------------------------------------------------------------
 # Step 5: Download the Factorio Dedicated Server Files & Set-Up
 
-> **Log in to your server with the new user account through cmd, PowerShell, PuTTY, etc. Use your preferred terminal emulator.**
+**Log in to your server with the new user account through cmd, PowerShell, PuTTY, etc. Use your preferred terminal emulator.**
 
 > **Make a Server Directory. Replace *server_dir_name* with the name you want**
 
