@@ -15,7 +15,6 @@ SCREEN_NAME="Factorio_Server_Community"
 SAVE_FILE="${FACTORIO_DIR}/factorio/saves/community_server.zip"
 SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"
-LOG_LEVEL="${LOG_LEVEL:-INFO}"
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
@@ -206,7 +205,7 @@ else
 fi
 
 # Step 12: Remove the dowloaded tar.xz in the Downloads directory
-log INFO "Cleaning yp the tar.xz file from &{DOWNLOADS_DIR}..."
+log INFO "Cleaning up the tar.xz file from ${DOWNLOADS_DIR}..."
 
 if ls "${DOWNLOADS_DIR}"/*.tar.xz 1> /dev/null 2>&1; then
     rm -f "${DOWNLOADS_DIR}"/*.tar.xz
