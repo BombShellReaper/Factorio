@@ -23,8 +23,8 @@
 #
 # m h  dom mon dow   command
 
-# Screen message - Server reboot
-43 1 * * * /path/to/another/script.sh
+# Screen message - Server reboot @ 04:43 everyday
+43 4 * * * /path/to/another/script.sh
 
-# Check if the server has an update every 30 minutes
-0,30 * * * * /path/to/another/script.sh
+# Check if the server has an update every hour
+0 * * * * /path/to/another/script.sh
