@@ -19,23 +19,23 @@
 
 # Step 2: Install Required Dependencies 
     
-> Install Screen (Session Manager)
+- Install Screen (Session Manager)
 
     sudo apt install screen -y
 
 **Install OpenSSH Sever**
 
-> This enables secure remote access to your server.
+- This enables secure remote access to your server.
 
     sudo apt install openssh-server -y
 
-> Install UFW (Uncomplicated Firewall)
+- Install UFW (Uncomplicated Firewall)
 
     sudo apt install ufw -y
 
 # Step 3: Configure UFW (Uncomplicated Firewall)
 
-> Allow all incoming connections to port 34197:
+- Allow all incoming connections to port 34197:
 
     sudo ufw allow from any proto udp to any port 34197 comment "Factorio Server Port"
 
