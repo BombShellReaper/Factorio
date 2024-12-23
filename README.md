@@ -1,4 +1,4 @@
-# Setting Up a Dedicated Factorio
+# Setting Up a Dedicated Factorio Server
 
 ## **Overview**
 
@@ -19,7 +19,7 @@ This guide is not intended for complete beginners to Linux or server administrat
   cover fundamental Linux concepts in detail. You can find helpful resources online, such as the Linux Foundation’s tutorials, or consider following beginner guides for server setup.
 
 > [!Caution]
-> Directory structures may differ based on your specific setup.
+> Directory structures may differ based on your specific setup. Always check paths and ensure you're working in the correct directories to avoid issues.
 
 # Step 1: Update and Upgrade Your System
 
