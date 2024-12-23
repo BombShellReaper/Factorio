@@ -35,7 +35,7 @@ This is a step-by-step guide on how to set up and run a Factorio server.
 
 # Step 3: Configure UFW (Uncomplicated Firewall)
 
-Allow all incoming connections to port 34197:
+> Allow all incoming connections to port 34197:
 
     sudo ufw allow from any proto udp to any port 34197 comment "Factorio Server Port"
 
@@ -49,97 +49,97 @@ Allow all incoming connections to port 34197:
 > [!TIP]
 > For improved security, restrict access to only trusted IP addresses.
 
-Set the default rule to deny incoming traffic (Optional)
+> Set the default rule to deny incoming traffic (Optional)
 
     sudo ufw default deny incoming
 
-**Enable UFW** (UFW will enable on reboot)
+> **Enable UFW** (UFW will enable on reboot)
 
     sudo ufw enable
 
-Check the UFW status after enabling it:
+> Check the UFW status after enabling it:
 
     sudo ufw status
     
 --------------------------------------------------------------------------------
 # Step 4: Create a Non Sudo User
 
-Replace "*your_username*" with the desired username.
+> Replace "*your_username*" with the desired username.
 
     sudo adduser your_username
 
 > [!NOTE]
 > This will prompt you through the setup
 
-**Reboot the system**
+> **Reboot the system**
 
     sudo reboot
 
 -------------------------------------------------------------------------------
 # Step 5: Download the Factorio Dedicated Server Files & Set-Up
 
-**Log in to your server with the new user account through cmd, PowerShell, PuTTY, etc. Use your preferred terminal emulator.**
+> **Log in to your server with the new user account through cmd, PowerShell, PuTTY, etc. Use your preferred terminal emulator.**
 
-**Make a Server Directory. Replace *server_dir_name* with the name you want**
+> **Make a Server Directory. Replace *server_dir_name* with the name you want**
 
     mkdir -p server_dir_name/factorio
 
-**Make a Downloads Directory. You can replace *Downloads* with any name you want.**
+> **Make a Downloads Directory. You can replace *Downloads* with any name you want.**
 
     mkdir Downloads
 
-**Download The server Files**
+> **Download The server Files**
 
     wget -v -O ~/Downloads/factorio-headless_linux$(date +%Y-%m-%d).tar.xz https://factorio.com/get-download/stable/headless/linux64
 
-**Copy The file in the Downloads Directory to The Server Directory**
+> **Copy The file in the Downloads Directory to The Server Directory**
 
     cp ~/Downloads/the_server_file ~/server_dir_name
 
-**Extract the file into the Factorio Server directory**
+> **Extract the file into the Factorio Server directory**
 
     tar -xvf server_dir_name/factorio the_zip_in_the_Downloads_dir --strip-components=1 -C ~/server_dir_name/factorio
 
-**Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
+> **Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
 
     cd ~/server_dir_name/factorio
 
-**Delete the Zip file. Replace *the_zip_file* with the correct name**
+> **Delete the Zip file. Replace *the_zip_file* with the correct name**
 
     rm the_zip_file
 
-**Create a *saves* Directory**
+> **Create a *saves* Directory**
 
     mkdir saves
 
-**Create a new save Replace *my-save.zip* with what you want the save to be called. Example: Fun-Land.zip**
+> **Create a new save Replace *my-save.zip* with what you want the save to be called. Example: Fun-Land.zip**
 
     ./bin/x64/factorio --create ./saves/my-save.zip
 
 # Step 6: Configure the Server
 
-**Navigate to the **data** Directory. Replace *server_dir_name* with the one you created**
+> **Navigate to the **data** Directory. Replace *server_dir_name* with the one you created**
 
     cd ~/server_dir_name/factorio/data
 
 > [!NOTE]
 > There are three files you can edit before starting the server. Howerver this is optional, but highly recomended.
 
-**Edit the Map Settings**
+> **Edit the Map Settings**
 
     nano map-settings.example.json
 
 > [!TIP]
 > When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
 
-**Edit the Server Setting**
+> **Edit the Server Setting**
 
     nano server-settings.example.json
 
 > [!TIP]
 > When you are done making changes. Press the "Ctrl" + "o", then delete the **.example** in the file name. Press "Enter", then press "Y". Lastly press "Ctrl" + "x"
 
-**Edit The Map Generation settings. This is optional since you already generated the world**
+> **Edit The Map Generation settings. This is optional since you already generated the world**
 
     nano map-gen-settings.example.json
 
@@ -149,7 +149,7 @@ Replace "*your_username*" with the desired username.
 > [!NOTE]
 > If you want to change the **map-gen-settings**, then you will need to delete the current **my-save.zip** in the **saves** directory and re-create a new **my.save.zip**
 
-**Start the server. Replace *my-save.zip* with the name you chose in the previous instructions.**
+> **Start the server. Replace *my-save.zip* with the name you chose in the previous instructions.**
 
     ./bin/x64/factorio --start-server ./saves/my-save.zip
 
@@ -158,28 +158,28 @@ Replace "*your_username*" with the desired username.
 
 # Step 7: Create a Startup Script (Optional)
 
-Return to the users home directory
+> Return to the users home directory
 
     cd
 
-Create a directory to place you scripts. Change the "*name*" with your desired directory name:
+> Create a directory to place you scripts. Change the "*name*" with your desired directory name:
 
     mkdir name
 
-Change to the new directory. Change the "*name*" with the one you just created:
+> Change to the new directory. Change the "*name*" with the one you just created:
 
     cd name
 
-Create a script. You can change the "*factorio_server_manager.sh*" with your desired script name, but remember to change it throught the following instrustions.
+> Create a script. You can change the "*factorio_server_manager.sh*" with your desired script name, but remember to change it throught the following instrustions.
 
     nano factorio_server_manager.sh
 
 
-**Make the script executable by the user:**
+> **Make the script executable by the user:**
 
     chmod +x factorio_server_manager.sh
 
-**Copy & edit The Variables In The Begining Of The Script**
+> **Copy & edit The Variables In The Begining Of The Script**
 
     #!/bin/bash
     
@@ -385,15 +385,15 @@ Create a script. You can change the "*factorio_server_manager.sh*" with your des
     
 # Step 8: Create a Systemd Service (Optional)
 
-Switch to your sudo user that you used at the beginning. Replace "*your_username*" with the actual username.
+> Switch to your sudo user that you used at the beginning. Replace "*your_username*" with the actual username.
 
     su your_username
 
-**Create the service file:**
+> **Create the service file:**
 
     sudo nano /etc/systemd/system/factorio_server.service
 
-**Add the following configuration:**
+> **Add the following configuration:**
 
     [Unit]
     Description=Custom Game Server
@@ -429,30 +429,30 @@ Switch to your sudo user that you used at the beginning. Replace "*your_username
 
 # Step 9: Hardening (Optional)
 
-Login with the sudo user and edit the sshd_config file
+> Login with the sudo user and edit the sshd_config file
 
     sudo nano /etc/ssh/sshd_config
 
-Locate the following lines and uncomment them, making the specified edits:
+> Locate the following lines and uncomment them, making the specified edits:
 
- **LoginGraceTime 2m**
+> **LoginGraceTime 2m**
 
     LoginGraceTime 1m
 
- **PermitRootLogin prohibit-password**
+> **PermitRootLogin prohibit-password**
 
     PermitRootLogin no
 
- **MaxSessions 10**
+> **MaxSessions 10**
 
     Max Sessions 4
 
-Reload systemctl & restart sshd.services
+> Reload systemctl & restart sshd.services
 
     sudo systemctl daemon-reload
     sudo systemctl restart ssh.service
 
-**Example:**
+> **Example:**
 
 ![image](https://github.com/user-attachments/assets/f12f25af-807d-4981-9e53-ebe2ab3d2688)
 
