@@ -1,4 +1,4 @@
-# Factorio
+# Setting Up a Dedicated Factorio
 
 # **Overview**
 
