@@ -468,11 +468,11 @@ Make a new group for the su command. Replace "*group_name*" with your desired na
 
 **Edit who can use the *su* command**
 
-Edit the *su* config
+> Edit the *su* config
 
     sudo nano /etc/pam.d/su
 
-Edit the following line to restrict su. Replace "*group_name*" with the one you made ealier.
+> Edit the following line to restrict su. Replace "*group_name*" with the one you made ealier.
 
     auth       required   pam_wheel.so group=group_name
 
