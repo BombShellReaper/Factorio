@@ -23,11 +23,11 @@
 
     sudo apt install screen -y
 
-**Install OpenSSH Sever**
-
-> This enables secure remote access to your server.
+> **Install OpenSSH Sever**
 
     sudo apt install openssh-server -y
+> [NOTE]
+> This enables secure remote access to your server.
 
 > Install UFW (Uncomplicated Firewall)
 
