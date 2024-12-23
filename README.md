@@ -186,18 +186,19 @@
     set -e  # Exit on any error
     
     # Configurable Variables
-    FACTORIO_DIR="<path_to_your_factorio_server>"  # Replace with the path to your Factorio server directory
-    BACKUP_DIR="<path_to_backup_directory>"  # Replace with the path to your backup directory
-    DOWNLOADS_DIR="<path_to_downloads_directory>"  # Replace with the path to your downloads directory
-    LOGS_DIR="<path_to_logs_directory>"  # Replace with the path to your logs directory
-    FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"
-    FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"  # Factorio server download URL
-    BACKUP_NAME="${BACKUP_DIR}/BackUp"  # Backup with timestamp
-    UPDATE_LOG_FILE="${LOGS_DIR}/UpdateServer-$(date +%Y-%m-%d_%H-%M-%S).txt"  # Unique log file for the update
-    SCREEN_NAME="Factorio_Server_Community"
-    SAVE_FILE="${FACTORIO_DIR}/factorio/saves/community_server.zip"
-    SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"
-    CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"
+    FACTORIO_SERVER_DIR="<path_to_your_factorio_server>"                                # Path to your Factorio server directory (e.g., /home/user/factorio)
+    BACKUP_DIR="<path_to_backup_directory>"                                             # Path to where backups will be stored (e.g., /home/user/factorio_backups)
+    DOWNLOADS_DIR="<path_to_downloads_directory>"                                       # Path to your downloads directory (e.g., /home/user/downloads)
+    LOGS_DIR="<path_to_logs_directory>"                                                 # Path to where the logs will be saved (e.g., /home/user/factorio_logs)
+    FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix
+    FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL
+    BACKUP_DIR_NAME="${BACKUP_DIR}/factorio_backup_$(date +%Y-%m-%d_%H-%M-%S)"          # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
+    UPDATE_LOG_FILE="${LOGS_DIR}/factorio_update_log_$(date +%Y-%m-%d_%H-%M-%S).txt"    # Log file for the update process (e.g., /home/user/factorio_logs/factorio_update_log_2024-12-23_15-30-00.txt)
+    SCREEN_SESSION_NAME="factorio_server_session"                                       # Name for the screen session running the server (e.g., factorio_server_session)
+    SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/community_server.zip"              # Path to the save file used by the server (e.g., /home/user/factorio/saves/community_server.zip)
+    SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
+    CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
+
     
     # Default log level (can be overridden by environment variable LOG_LEVEL)
     LOG_LEVEL="${LOG_LEVEL:-INFO}"
