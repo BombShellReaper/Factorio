@@ -471,7 +471,7 @@ This guide is not intended for complete beginners to Linux or server administrat
     sudo systemctl start factorio_server.service
 
 > [!Important]
->  *This systemd service, along with the accompanying script, ensures that your server automatically starts after a reboot and updates itself before launching.*
+>  *This systemd service, along with the accompanying script, ensures that your server automatically starts after a reboot.*
 
 # Step 9: Hardening (Optional)
 
