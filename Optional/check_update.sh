@@ -11,6 +11,7 @@ FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"  # Name of the F
 FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"  # URL for downloading Factorio headless server
 BACKUP_NAME="${BACKUP_DIR}/BackUp"  # Backup with timestamp
 UPDATE_LOG_FILE="${LOGS_DIR}/Check_Update-$(date +%Y-%m-%d_%H-%M-%S).txt"  # Log file for updates
+LOG_NAME_CLEANUP="UpdateServer-.*\.txt"
 SCREEN_NAME="YOUR_SCREEN_SESSION_NAME"  # Name of your screen session (e.g., Factorio_Server)
 SAVE_FILE="${FACTORIO_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"  # Path to the save file for the Factorio server
 SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"  # Path to server settings file
@@ -187,9 +188,9 @@ else
 fi
 
 # Step 13: Clean up old update log files in ~/logs
-LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | wc -l)
+LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "${LOG_NAME_CLEANUP}" | wc -l)
 if [ "${LOG_COUNT}" -gt 30 ]; then
-    ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | tail -n +31 | while read log_file; do
+    ls -tp "${LOGS_DIR}" | grep "${LOG_NAME_CLEANUP}" | tail -n +31 | while read log_file; do
         # Check if the log file exists before attempting to remove it
         if [ -f "${LOGS_DIR}/${log_file}" ]; then
             rm -f "${LOGS_DIR}/${log_file}"
