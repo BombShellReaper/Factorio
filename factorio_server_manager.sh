@@ -10,8 +10,7 @@ LOGS_DIR="<path_to_logs_directory>"                                             
 FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix
 FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL
 BACKUP_DIR_NAME="${BACKUP_DIR}/factorio_backup_$(date +%Y-%m-%d_%H-%M-%S)"          # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
-UPDATE_LOG_FILE="${LOGS_DIR}/name_of_your_file-$(date +%Y-%m-%d_%H-%M-%S).txt"    # Log file for the update process (e.g., /home/user/factorio_logs/factorio_update_log_2024-12-23_15-30-00.txt)
-LOG_NAME_CLEANUP="name_of_your_file-.*\.txt"
+UPDATE_LOG_FILE="${LOGS_DIR}/start_factorio_server-$(date +%Y-%m-%d_%H-%M-%S).txt"    # Log file for the update process (e.g., /home/user/factorio_logs/factorio_update_log_2024-12-23_15-30-00.txt)
 SCREEN_SESSION_NAME="factorio_server_session"                                       # Name for the screen session running the server (e.g., factorio_server_session)
 SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/community_server.zip"              # Path to the save file used by the server (e.g., /home/user/factorio/saves/community_server.zip)
 SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
@@ -94,9 +93,9 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
         fi
 
         # Clean up old update log files in ~/logs
-        LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | wc -l)
+        LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | wc -l)
         if [ "${LOG_COUNT}" -gt 30 ]; then
-            ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | tail -n +31 | while read log_file; do
+            ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | tail -n +31 | while read log_file; do
                 # Check if the log file exists before attempting to remove it
                 if [ -f "${LOGS_DIR}/${log_file}" ]; then
                     rm -f "${LOGS_DIR}/${log_file}"
@@ -216,9 +215,9 @@ else
 fi
 
 # Step 13: Clean up old update log files in ~/logs
-LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | wc -l)
+LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | wc -l)
 if [ "${LOG_COUNT}" -gt 30 ]; then
-    ls -tp "${LOGS_DIR}" | grep "UpdateServer-.*\.txt" | tail -n +31 | while read log_file; do
+    ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | tail -n +31 | while read log_file; do
         # Check if the log file exists before attempting to remove it
         if [ -f "${LOGS_DIR}/${log_file}" ]; then
             rm -f "${LOGS_DIR}/${log_file}"
