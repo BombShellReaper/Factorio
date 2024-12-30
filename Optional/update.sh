@@ -17,7 +17,7 @@ SAVE_FILE="${FACTORIO_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"  # Path to the sav
 SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"  # Path to server settings file
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"  # File to store the checksum of the downloaded Factorio file
 REBOOT_WARNING="The server requires an immediate reboot to apply the updates."
-
+SERVER_PORT="34197"
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
 
@@ -159,7 +159,7 @@ log INFO "Extraction completed."
 
 # Step 10: Start Factorio server using screen
 log INFO "Starting Factorio server..."
-screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/factorio/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" >> "${UPDATE_LOG_FILE}" 2>&1
+screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/factorio/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" >> "${UPDATE_LOG_FILE}" --port "${SERVER_PORT}" 2>&1
 
 # Check if the screen session is running
 if screen -list | grep -q "${SCREEN_NAME}"; then
