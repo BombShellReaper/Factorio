@@ -79,7 +79,6 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
 
     if [[ "$NEW_CHECKSUM" == "$PREVIOUS_CHECKSUM" ]]; then
         log INFO "Checksum matches. Skipping download and backup, exiting the script."
-
         exit 0  # Exit early if the server is started
     else
         log INFO "Checksum mismatch. Proceeding with download and update."
