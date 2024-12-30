@@ -4,10 +4,10 @@ set -e  # Exit on any error
 
 # Configurable Variables - Please adjust these values to suit your environment
 
-FACTORIO_SERVER_DIR="<path_to_your_factorio_server>"                                # Path to your Factorio server directory (e.g., /home/user/factorio)
-BACKUP_DIR="<path_to_backup_directory>"                                             # Path to where backups will be stored (e.g., /home/user/factorio_backups)
-DOWNLOADS_DIR="<path_to_downloads_directory>"                                       # Path to your downloads directory (e.g., /home/user/downloads)
-LOGS_DIR="<path_to_logs_directory>"                                                 # Path to where the logs will be saved (e.g., /home/user/factorio_logs)
+FACTORIO_DIR="path_to_your_factorio_server"                                         # Path to your Factorio server directory (e.g., /home/user/factorio)
+BACKUP_DIR="path_to_backup_directory"                                               # Path to where backups will be stored (e.g., /home/user/factorio_backups)
+DOWNLOADS_DIR="path_to_downloads_directory"                                         # Path to your downloads directory (e.g., /home/user/downloads)
+LOGS_DIR="path_to_logs_directory"                                                   # Path to where the logs will be saved (e.g., /home/user/factorio_logs)
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
 
 FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL - Do Not Change
