@@ -2,22 +2,28 @@
 
 set -e  # Exit on any error
 
-# Configurable Variables
-FACTORIO_DIR="YOUR_PATH/factorio_server"  # Set the path to your Factorio server directory
-BACKUP_DIR="YOUR_PATH"  # Set the path to where you want backups to be stored
-DOWNLOADS_DIR="YOUR_PATH/Downloads"  # Set the path to your downloads directory
-LOGS_DIR="YOUR_PATH/logs"  # Set the path to your logs directory
-FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"  # Name of the Factorio server download
-FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"  # URL for downloading Factorio headless server
-BACKUP_NAME="${BACKUP_DIR}/BackUp"  # Backup with timestamp
-UPDATE_LOG_FILE="${LOGS_DIR}/name_of_your_file-$(date +%Y-%m-%d_%H-%M-%S).txt"  # Log file for updates
-LOG_NAME_CLEANUP="name_of_your-.*\.txt"
-SCREEN_NAME="YOUR_SCREEN_SESSION_NAME"  # Name of your screen session (e.g., Factorio_Server)
-SAVE_FILE="${FACTORIO_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"  # Path to the save file for the Factorio server
-SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"  # Path to server settings file
-CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"  # File to store the checksum of the downloaded Factorio file
-REBOOT_WARNING="The server requires an immediate reboot to apply the updates."
-SERVER_PORT="34197"
+# Configurable Variables - Please adjust these values to suit your environment
+
+FACTORIO_SERVER_DIR="<path_to_your_factorio_server>"                                # Path to your Factorio server directory (e.g., /home/user/factorio)
+BACKUP_DIR="<path_to_backup_directory>"                                             # Path to where backups will be stored (e.g., /home/user/factorio_backups)
+DOWNLOADS_DIR="<path_to_downloads_directory>"                                       # Path to your downloads directory (e.g., /home/user/downloads)
+LOGS_DIR="<path_to_logs_directory>"                                                 # Path to where the logs will be saved (e.g., /home/user/factorio_logs)
+CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
+
+FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL - Do Not Change
+FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix.
+
+BACKUP_DIR_NAME="${BACKUP_DIR}/BackUp_$(date +%Y-%m-%d_%H-%M-%S)"                   # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
+UPDATE_LOG_FILE="${LOGS_DIR}/update_log-$(date +%Y-%m-%d_%H-%M-%S).txt"             # Log file for updates (e.g., Start_Server-$(date +%Y-%m-%d_%H-%M-%S).txt)
+CLEAN_UP_LOG="update_log"                                                           # Replace with the name of your log file.
+
+SCREEN_SESSION_NAME="Factorio_Server"                                               # Name for your screen session (e.g., Factorio_Server)
+SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"                # Name for your save file (e.g., Factorio_Server.zip)
+SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
+SERVER_PORT="34197"                                                                 # Default port for the Factorio server. Adjust if running multiple servers.
+
+REBOOT_WARNING="The server requires an immediate reboot to apply the updates."       # Warning message for a reboot after updates.
+
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
