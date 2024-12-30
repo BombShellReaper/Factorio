@@ -64,15 +64,19 @@ log INFO "========== Update Process Started: $(date) =========="
 # Step 2: Check checksum to avoid unnecessary downloads
 if [[ -f "${CHECKSUM_FILE}" ]]; then
     log INFO "Verifying checksum..."
+    log DEBUG "Checksum file exists at ${CHECKSUM_FILE}"
 
     # Get the checksum of the currently downloaded server file
     NEW_CHECKSUM=$(wget -qO- "${FACTORIO_URL}" | sha256sum | awk '{print $1}')
+    log DEBUG "New checksum: $NEW_CHECKSUM"
 
     # Read the previously stored checksum (if it exists)
     PREVIOUS_CHECKSUM=$(cat "${CHECKSUM_FILE}")
+    log DEBUG "Previous checksum: $PREVIOUS_CHECKSUM"
 
     if [[ "$NEW_CHECKSUM" == "$PREVIOUS_CHECKSUM" ]]; then
         log INFO "Checksum matches. Skipping download and backup, starting the server."
+        log DEBUG "Checksum match confirmed."
 
         # Step 3: Start the Factorio server
         log INFO "========== Starting Factorio Server: $(date) =========="
