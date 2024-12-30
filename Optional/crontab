@@ -25,5 +25,5 @@
 # Screen message - Server reboot @ 04:43 a.m everyday
 43 4 * * * /path/to/another/script.sh
 
-# Check if the server has an update every 1.5 hours
-0,30 1 * * * /path/to/another/script.sh
+# Check if the server has an update every 2 hours
+0 */2 * * * /path/to/another/script.sh
