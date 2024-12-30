@@ -15,7 +15,7 @@ FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                 
 
 BACKUP_DIR_NAME="${BACKUP_DIR}/BackUp_$(date +%Y-%m-%d_%H-%M-%S)"                   # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
 UPDATE_LOG_FILE="${LOGS_DIR}/update_log-$(date +%Y-%m-%d_%H-%M-%S).txt"             # Log file for updates (e.g., Start_Server-$(date +%Y-%m-%d_%H-%M-%S).txt)
-CLEAN_UP_LOG="update_log"                                                           # Replace with the name of your log file.
+CLEAN_UP_LOG="change_me"                                                            # Replace "change_me" to what you used in "UPDATE_LOG_FILE" (e.g., Start_Server).
 
 SCREEN_SESSION_NAME="Factorio_Server"                                               # Name for your screen session (e.g., Factorio_Server)
 SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/YOUR_SAVE_FILE.zip"                # Name for your save file (e.g., Factorio_Server.zip)
