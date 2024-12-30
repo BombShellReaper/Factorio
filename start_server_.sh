@@ -16,7 +16,7 @@ SCREEN_SESSION_NAME="change_me"                                                 
 SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/change_me.zip"                     # Change "change_me" to whatever you want for the name of your server file. (e.g., Factorio_Server.zip)
 SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
-SERVER_PORT="34197"                                                                 # This is the defualt port for the server. If you run more than one sever on the same network, then you will need to change this.
+SERVER_PORT="34197"                                                                 # This is the defualt port for the server.
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
