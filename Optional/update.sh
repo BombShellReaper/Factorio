@@ -24,7 +24,6 @@ SERVER_PORT="34197"                                                             
 
 REBOOT_WARNING="The server requires an immediate reboot to apply the updates."      # Warning message for a reboot after updates.
 
-
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
 
