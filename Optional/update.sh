@@ -18,6 +18,7 @@ SERVER_SETTINGS="${FACTORIO_DIR}/factorio/data/server-settings.json"  # Path to 
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"  # File to store the checksum of the downloaded Factorio file
 REBOOT_WARNING="The server requires an immediate reboot to apply the updates."
 SERVER_PORT="34197"
+
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
 
