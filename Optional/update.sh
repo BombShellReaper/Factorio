@@ -26,7 +26,7 @@ REBOOT_WARNING_5="The server will restart in 5 minutes to apply critical updates
 REBOOT_WARNING_4="The server will restart in 4 minutes to apply critical updates. Please save your work and log off immediately."
 REBOOT_WARNING_3="The server will restart in 3 minutes to apply critical updates. Please save your work and log off immediately."
 REBOOT_WARNING_2="The server will restart in 2 minutes to apply critical updates. Please save your work and log off immediately."
-REBOOT_WARNING_1="The server will restart in 1 minutes to apply critical updates. Please save your work and log off immediately."
+REBOOT_WARNING_1="The server will restart in 1 minute to apply critical updates. Please save your work and log off immediately."
 REBOOT_WARNING="The server is rebooting and will be back online in approximately 5 minutes. Thank you for your patience."
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
