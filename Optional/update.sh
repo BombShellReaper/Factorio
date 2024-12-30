@@ -90,18 +90,13 @@ fi
 
 # Step 2: Check if the screen session exists
 if screen -list | grep -q "$SCREEN_NAME"; then
-    # Send server reboot message to the screen session
-    screen -S "$REBOOT_WARNING_5" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 60
-    screen -S "$REBOOT_WARNING_4" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 60
-    screen -S "$REBOOT_WARNING_3" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 60
-    screen -S "$REBOOT_WARNING_2" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 60
-    screen -S "$REBOOT_WARNING_1" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 60
-    screen -S "$REBOOT_WARNING" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    # Countdown warnings
+    for message in "$REBOOT_WARNING_5" "$REBOOT_WARNING_4" "$REBOOT_WARNING_3" "$REBOOT_WARNING_2" "$REBOOT_WARNING_1"; do
+        screen -S "$SCREEN_NAME" -X stuff "$message$(echo -ne '\r')"
+        sleep 60
+    done
+    # Final warning
+    screen -S "$SCREEN_NAME" -X stuff "$FINAL_WARNING$(echo -ne '\r')"
     sleep 20
 else
     log ERROR "Screen session '$SCREEN_NAME' not found."
