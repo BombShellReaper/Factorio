@@ -22,7 +22,12 @@ SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/change_me.zip"                 
 SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
 SERVER_PORT="34197"                                                                 # Default port for the Factorio server. Adjust if running multiple servers.
 
-REBOOT_WARNING="The server requires an immediate reboot to apply the updates."      # Warning message for a reboot after updates.
+REBOOT_WARNING_5="The server will restart in 5 minutes to apply critical updates. Please save your work and log off immediately."
+REBOOT_WARNING_4="The server will restart in 4 minutes to apply critical updates. Please save your work and log off immediately."
+REBOOT_WARNING_3="The server will restart in 3 minutes to apply critical updates. Please save your work and log off immediately."
+REBOOT_WARNING_2="The server will restart in 2 minutes to apply critical updates. Please save your work and log off immediately."
+REBOOT_WARNING_1="The server will restart in 1 minutes to apply critical updates. Please save your work and log off immediately."
+REBOOT_WARNING="The server is rebooting and will be back online in approximately 5 minutes. Thank you for your patience."
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
@@ -86,15 +91,25 @@ fi
 # Step 2: Check if the screen session exists
 if screen -list | grep -q "$SCREEN_NAME"; then
     # Send server reboot message to the screen session
-    screen -S "$SCREEN_NAME" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
-    sleep 15
+    screen -S "$REBOOT_WARNING_5" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    sleep 60
+    screen -S "$REBOOT_WARNING_4" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    sleep 60
+    screen -S "$REBOOT_WARNING_3" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    sleep 60
+    screen -S "$REBOOT_WARNING_2" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    sleep 60
+    screen -S "$REBOOT_WARNING_1" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    sleep 60
+    screen -S "$REBOOT_WARNING" -X stuff "$REBOOT_WARNING"$(echo -ne '\r')
+    sleep 20
 else
     log ERROR "Screen session '$SCREEN_NAME' not found."
 fi
 
 # Step 3: Stop the screen session
 screen -S "$SCREEN_NAME" -X stuff $'\003'
-sleep 15
+sleep 60
 
 # Step 4: Backup the current Factorio server
 if [ -d "${BACKUP_NAME}" ]; then
