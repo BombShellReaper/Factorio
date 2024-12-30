@@ -11,9 +11,9 @@ LOGS_DIR="path_to_logs_directory"                                               
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
 
 FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL - Do Not Change
-FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix.
+FACTORIO_FILE="factorio-headless_linux-$(date +%Y-%m-%d).tar.xz"                    # Name of the downloaded Factorio server file with a date suffix.
 
-BACKUP_DIR_NAME="${BACKUP_DIR}/change_me_$(date +%Y-%m-%d_%H-%M-%S)"                # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
+BACKUP_DIR_NAME="${BACKUP_DIR}/change_me-$(date +%Y-%m-%d_%H-%M-%S)"                # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
 UPDATE_LOG_FILE="${LOGS_DIR}/change_me-$(date +%Y-%m-%d_%H-%M-%S).txt"              # Replace "change_me" with the desired name for your log file. (e.g., Start_Server-$(date +%Y-%m-%d_%H-%M-%S).txt)
 CLEAN_UP_LOG="change_me"                                                            # Replace "change_me" to what you used in "UPDATE_LOG_FILE" (e.g., Start_Server).
 
