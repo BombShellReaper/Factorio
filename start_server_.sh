@@ -7,15 +7,16 @@ FACTORIO_SERVER_DIR="<path_to_your_factorio_server>"                            
 BACKUP_DIR="<path_to_backup_directory>"                                             # Path to where backups will be stored (e.g., /home/user/factorio_backups)
 DOWNLOADS_DIR="<path_to_downloads_directory>"                                       # Path to your downloads directory (e.g., /home/user/downloads)
 LOGS_DIR="<path_to_logs_directory>"                                                 # Path to where the logs will be saved (e.g., /home/user/factorio_logs)
-FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix
-FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL
-BACKUP_DIR_NAME="${BACKUP_DIR}/factorio_backup_$(date +%Y-%m-%d_%H-%M-%S)"          # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
-UPDATE_LOG_FILE="${LOGS_DIR}/start_factorio_server-$(date +%Y-%m-%d_%H-%M-%S).txt"    # Log file for the update process (e.g., /home/user/factorio_logs/factorio_update_log_2024-12-23_15-30-00.txt)
-SCREEN_SESSION_NAME="factorio_server_session"                                       # Name for the screen session running the server (e.g., factorio_server_session)
-SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/community_server.zip"              # Path to the save file used by the server (e.g., /home/user/factorio/saves/community_server.zip)
+FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix. You can change the name "factorio-headless_linux" if you want.
+FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL - Do Not Change
+BACKUP_DIR_NAME="${BACKUP_DIR}/change_me_$(date +%Y-%m-%d_%H-%M-%S)"                # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
+UPDATE_LOG_FILE="${LOGS_DIR}/change_me-$(date +%Y-%m-%d_%H-%M-%S).txt"              # Change "change_me" to whatever you want for the name of the log file. (e.g., Start_Server-$(date +%Y-%m-%d_%H-%M-%S).txt)
+CLEAN_UP_LOG="change_me"                                                            # Change "change_me" to what you used in "UPDATE_LOG_FILE" (e.g., Start_Server)
+SCREEN_SESSION_NAME="change_me"                                                     # Change "change_me" to whatever you want for the name of screen session.
+SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/change_me.zip"                     # Change "change_me" to whatever you want for the name of your server file. (e.g., Factorio_Server.zip)
 SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
-SERVER_PORT="34197"
+SERVER_PORT="34197"                                                                 # This is the defualt port for the server. If you run more than one sever on the same network, then you will need to change this.
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
@@ -94,7 +95,7 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
         fi
 
         # Clean up old update log files in ~/logs
-        LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | wc -l)
+        LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "${CLEAN_UP_LOG}-.*\.txt" | wc -l)
         if [ "${LOG_COUNT}" -gt 30 ]; then
             ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | tail -n +31 | while read log_file; do
                 # Check if the log file exists before attempting to remove it
@@ -216,7 +217,7 @@ else
 fi
 
 # Step 13: Clean up old update log files in ~/logs
-LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | wc -l)
+LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "${CLEAN_UP_LOG}-.*\.txt" | wc -l)
 if [ "${LOG_COUNT}" -gt 30 ]; then
     ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | tail -n +31 | while read log_file; do
         # Check if the log file exists before attempting to remove it
