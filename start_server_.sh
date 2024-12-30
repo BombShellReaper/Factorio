@@ -7,16 +7,16 @@ FACTORIO_SERVER_DIR="<path_to_your_factorio_server>"                            
 BACKUP_DIR="<path_to_backup_directory>"                                             # Path to where backups will be stored (e.g., /home/user/factorio_backups)
 DOWNLOADS_DIR="<path_to_downloads_directory>"                                       # Path to your downloads directory (e.g., /home/user/downloads)
 LOGS_DIR="<path_to_logs_directory>"                                                 # Path to where the logs will be saved (e.g., /home/user/factorio_logs)
-FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix. You can change the name "factorio-headless_linux" if you want.
+FACTORIO_FILE="factorio-headless_linux$(date +%Y-%m-%d).tar.xz"                     # Name of the downloaded Factorio server file with a date suffix. You can replace "factorio-headless_linux"
 FACTORIO_URL="https://factorio.com/get-download/stable/headless/linux64"            # Factorio server download URL - Do Not Change
 BACKUP_DIR_NAME="${BACKUP_DIR}/change_me_$(date +%Y-%m-%d_%H-%M-%S)"                # Backup directory with timestamp (e.g., /home/user/factorio_backups/factorio_backup_2024-12-23)
-UPDATE_LOG_FILE="${LOGS_DIR}/change_me-$(date +%Y-%m-%d_%H-%M-%S).txt"              # Change "change_me" to whatever you want for the name of the log file. (e.g., Start_Server-$(date +%Y-%m-%d_%H-%M-%S).txt)
-CLEAN_UP_LOG="change_me"                                                            # Change "change_me" to what you used in "UPDATE_LOG_FILE" (e.g., Start_Server)
-SCREEN_SESSION_NAME="change_me"                                                     # Change "change_me" to whatever you want for the name of screen session.
-SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/change_me.zip"                     # Change "change_me" to whatever you want for the name of your server file. (e.g., Factorio_Server.zip)
+UPDATE_LOG_FILE="${LOGS_DIR}/change_me-$(date +%Y-%m-%d_%H-%M-%S).txt"              # REPLACE "change_me" with the desired name for your log file. (e.g., Start_Server-$(date +%Y-%m-%d_%H-%M-%S).txt)
+CLEAN_UP_LOG="change_me"                                                            # Replace "change_me" to what you used in "UPDATE_LOG_FILE" (e.g., Start_Server)
+SCREEN_SESSION_NAME="change_me"                                                     # Replace "change_me" with the desired name for your screen session.
+SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/change_me.zip"                     # Replace "change_me" with the desired name for your server file. (e.g., Factorio_Server.zip)
 SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
 CHECKSUM_FILE="${DOWNLOADS_DIR}/factorio_checksum.txt"                              # Path to store the checksum of the downloaded Factorio server file (e.g., /home/user/factorio/factorio_checksum.txt)
-SERVER_PORT="34197"                                                                 # This is the defualt port for the server.
+SERVER_PORT="34197"                                                                 # This is the default port for the server. This is added in case you run more than one server.
 
 # Default log level (can be overridden by environment variable LOG_LEVEL)
 LOG_LEVEL="${LOG_LEVEL:-INFO}"
