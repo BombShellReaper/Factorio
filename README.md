@@ -106,15 +106,11 @@ This guide is not intended for complete beginners to Linux or server administrat
 
 > **Extract the file into the Factorio Server directory**
 
-    tar -xvf server_dir_name/factorio the_zip_in_the_Downloads_dir --strip-components=1 -C ~/server_dir_name/factorio
+    tar -xvf ~/Downloads/factorio/the_zip_in_the_Downloads_dir --strip-components=1 -C ~/server_dir_name/factorio
 
 > **Navigate to the Server Directory. Replace *server_dir_name* with the one you created from above**
 
     cd ~/server_dir_name/factorio
-
-> **Delete the Zip file. Replace *the_zip_file* with the correct name**
-
-    rm the_zip_file
 
 > **Create a *saves* Directory**
 
@@ -181,11 +177,6 @@ This guide is not intended for complete beginners to Linux or server administrat
 > Create a script. You can change the "*factorio_server_manager.sh*" with your desired script name, but remember to change it throught the following instrustions.
 
     nano factorio_server_manager.sh
-
-
-> **Make the script executable by the user:**
-
-    chmod +x factorio_server_manager.sh
 
 > **Copy & edit The Variables In The Begining Of The Script**
 
@@ -427,6 +418,10 @@ This guide is not intended for complete beginners to Linux or server administrat
     log INFO "========== Update Process Completed: $(date) =========="
     
     exit 0  # Exit the script after completion
+
+> **Make the script executable by the user:**
+
+    chmod +x factorio_server_manager.sh
     
 # Step 8: Create a Systemd Service (Optional)
 
