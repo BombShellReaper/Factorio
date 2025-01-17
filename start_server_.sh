@@ -18,8 +18,8 @@ UPDATE_LOG_FILE="${LOGS_DIR}/change_me-$(date +%Y-%m-%d_%H-%M-%S).txt"          
 CLEAN_UP_LOG="change_me"                                                            # Replace "change_me" to what you used in "UPDATE_LOG_FILE" (e.g., Start_Server).
 
 SCREEN_NAME="change_me"                                                             # Replace "change_me" with the desired name for your screen session.
-SAVE_FILE="${FACTORIO_SERVER_DIR}/factorio/saves/change_me.zip"                     # Replace "change_me" with the desired name for your server file. (e.g., Factorio_Server.zip)
-SERVER_SETTINGS="${FACTORIO_SERVER_DIR}/factorio/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
+SAVE_FILE="${FACTORIO_DIR}/saves/change_me.zip"                     # Replace "change_me" with the desired name for your server file. (e.g., Factorio_Server.zip)
+SERVER_SETTINGS="${FACTORIO_DIR}/data/server-settings.json"         # Path to the Factorio server settings file (e.g., /home/user/factorio/data/server-settings.json)
 SERVER_PORT="34197"                                                                 # Default port for the Factorio server. Adjust if running multiple servers.
 
 
