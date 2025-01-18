@@ -100,10 +100,6 @@ This guide is not intended for complete beginners to Linux or server administrat
 
     wget -v -O ~/Downloads/factorio-headless_linux$(date +%Y-%m-%d).tar.xz https://factorio.com/get-download/stable/headless/linux64
 
-> **Copy The file in the Downloads Directory to The Server Directory**
-
-    cp ~/Downloads/the_server_file ~/server_dir_name
-
 > **Extract the file into the Factorio Server directory**
 
     tar -xvf ~/Downloads/factorio/the_zip_in_the_Downloads_dir --strip-components=1 -C ~/server_dir_name/factorio
