@@ -106,7 +106,7 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
         # Clean up old update log files in ~/logs
         LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "${CLEAN_UP_LOG}-.*\.txt" | wc -l)
         if [ "${LOG_COUNT}" -gt 30 ]; then
-            ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | tail -n +31 | while read log_file; do
+            ls -tp "${LOGS_DIR}" | grep "${CLEAN_UP_LOG}-.*\.txt" | tail -n +31 | while read log_file; do
                 # Check if the log file exists before attempting to remove it
                 if [ -f "${LOGS_DIR}/${log_file}" ]; then
                     rm -f "${LOGS_DIR}/${log_file}"
@@ -228,7 +228,7 @@ fi
 # Step 13: Clean up old update log files in ~/logs
 LOG_COUNT=$(ls -tp "${LOGS_DIR}" | grep "${CLEAN_UP_LOG}-.*\.txt" | wc -l)
 if [ "${LOG_COUNT}" -gt 30 ]; then
-    ls -tp "${LOGS_DIR}" | grep "start_factorio_server-.*\.txt" | tail -n +31 | while read log_file; do
+    ls -tp "${LOGS_DIR}" | grep "${CLEAN_UP_LOG}-.*\.txt" | tail -n +31 | while read log_file; do
         # Check if the log file exists before attempting to remove it
         if [ -f "${LOGS_DIR}/${log_file}" ]; then
             rm -f "${LOGS_DIR}/${log_file}"
