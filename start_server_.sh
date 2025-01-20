@@ -82,8 +82,8 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
         log INFO "========== Starting Factorio Server: $(date) =========="
 
         # Ensure the Factorio binary exists and the directory structure
-        if [ ! -d "${FACTORIO_DIR}/factorio/bin/x64" ] || [ ! -f "${FACTORIO_DIR}/factorio/bin/x64/factorio" ]; then
-            log ERROR "Error: Factorio binary not found at ${FACTORIO_DIR}/factorio/bin/x64/factorio"
+        if [ ! -d "${FACTORIO_DIR}/factorio/bin/x64" ] || [ ! -f "${FACTORIO_DIR}/bin/x64/factorio" ]; then
+            log ERROR "Error: Factorio binary not found at ${FACTORIO_DIR}/bin/x64/factorio"
             exit 1
         fi
 
@@ -94,7 +94,7 @@ if [[ -f "${CHECKSUM_FILE}" ]]; then
         fi
 
         # Start Factorio server using screen
-        screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/factorio/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" --port "${SERVER_PORT}"
+        screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" --port "${SERVER_PORT}"
 
         if [ $? -eq 0 ]; then
             log INFO "Factorio server started successfully."
@@ -187,16 +187,16 @@ cp "${DOWNLOADS_DIR}/${FACTORIO_FILE}" "${FACTORIO_DIR}"
 log INFO "File copied to ${FACTORIO_DIR}."
 
 # Step 9: Extract the file into the Factorio directory
-log INFO "Extracting ${FACTORIO_FILE} to ${FACTORIO_DIR}/factorio..."
-mkdir -p "${FACTORIO_DIR}/factorio"
-tar -xvf "${FACTORIO_DIR}/${FACTORIO_FILE}" --strip-components=1 -C "${FACTORIO_DIR}/factorio" || {
+log INFO "Extracting ${FACTORIO_FILE} to ${FACTORIO_DIR}..."
+mkdir -p "${FACTORIO_DIR}"
+tar -xvf "${FACTORIO_DIR}/${FACTORIO_FILE}" --strip-components=1 -C "${FACTORIO_DIR}" || {
     log ERROR "Extraction failed."
     exit 1
 }
 log INFO "Extraction completed."
 
 # Step 10: Start Factorio server using screen
-screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/factorio/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" --port "${SERVER_PORT}"
+screen -dmS "${SCREEN_NAME}" "${FACTORIO_DIR}/bin/x64/factorio" --start-server "${SAVE_FILE}" --server-settings "${SERVER_SETTINGS}" --port "${SERVER_PORT}"
 
 if [ $? -eq 0 ]; then
     log INFO "Factorio server started successfully."
