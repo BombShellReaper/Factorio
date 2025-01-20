@@ -1,6 +1,8 @@
 [Unit]
 Description=Custom Game Server
 After=network.target
+StartLimitInterval=60
+StartLimitBurst=3
 
 [Service]
 Type=simple
@@ -9,10 +11,8 @@ ExecStart=/path/to/start_server.sh                # Path to the script that star
 RemainAfterExit=yes
 Restart=on-failure
 RestartSec=5
-StartLimitInterval=60
-StartLimitBurst=3
-StandardOutput=/var/log/game_server.log           # Standard output and error logs. The log file location can be customized.
-StandardError=/var/log/game_server_error.log      # Standard output and error logs. The log file location can be customized.
+StandardOutput=append:/var/log/game_server.log           # Standard output and error logs. The log file location can be customized.
+StandardError=append:/var/log/game_server_error.log      # Standard output and error logs. The log file location can be customized.
 
 [Install]
 WantedBy=multi-user.target
